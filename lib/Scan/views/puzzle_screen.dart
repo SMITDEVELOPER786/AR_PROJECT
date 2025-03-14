@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:play_iq/Home/home.dart';
+import 'package:play_iq/Scan/controllers/puzzleCompleteController.dart';
 import 'package:play_iq/Tab.dart';
-
 import '../core/theme.dart';
 
+
 class PuzzleCompletedView extends StatelessWidget {
-  const PuzzleCompletedView({super.key});
+  final PuzzleCompletedController controller = Get.put(PuzzleCompletedController());
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +35,14 @@ class PuzzleCompletedView extends StatelessWidget {
                         const SizedBox(height: 40),
                         const Text(
                           "Good job",
-                          style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold,color: Colors.black),
+                          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                         const SizedBox(height: 10),
-                        const Text(
-                          "     DRAGON EXOTIC \nCHARACTER UNLOCKED",
-                          style: TextStyle(fontSize: 12, color: Colors.black),
-                        ),
+                        Obx(() => Text(
+                              controller.characterName.value,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 12, color: Colors.black),
+                            )),
                         const SizedBox(height: 15),
                         const Text(
                           "Reward",
@@ -52,7 +52,7 @@ class PuzzleCompletedView extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 15),
-                        Image.asset('assets/images/dragon.jpg', height: 120),
+                        Obx(() => Image.asset(controller.characterImage.value, height: 120)),
                         const SizedBox(height: 15),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
@@ -62,16 +62,13 @@ class PuzzleCompletedView extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Hometab()));
-
+                            Get.offAll(() => Hometab());
                           },
                           child: const Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 10),
+                            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                             child: Text(
                               "YAY, OKAY",
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.white),
+                              style: TextStyle(fontSize: 16, color: Colors.white),
                             ),
                           ),
                         ),

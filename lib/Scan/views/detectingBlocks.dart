@@ -1,27 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:play_iq/Scan/AddCharacter.dart';
-import 'package:play_iq/Scan/characters.dart';
+import 'package:get/get.dart';
+import 'package:play_iq/Scan/controllers/BlockDetectionController.dart';// Controller ka path sahi rakhein
+import 'package:play_iq/Scan/views/characters.dart';
 
-class BlockDetectionScreen extends StatefulWidget {
-  @override
-  _BlockDetectionScreenState createState() => _BlockDetectionScreenState();
-}
-
-class _BlockDetectionScreenState extends State<BlockDetectionScreen> {
-  bool blocksDetected = false;
-
-  void detectBlocks() {
-    setState(() {
-      blocksDetected = true;
-    });
-  }
+class BlockDetectionScreen extends StatelessWidget {
+  final BlockDetectionController controller = Get.put(BlockDetectionController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          // Background Gradient
+          // Background
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -43,10 +33,7 @@ class _BlockDetectionScreenState extends State<BlockDetectionScreen> {
               ),
               child: IconButton(
                 icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                onPressed: () {
-            Navigator.pop(context);
-
-                },
+                onPressed: () => Get.back(),
               ),
             ),
           ),
@@ -70,7 +57,7 @@ class _BlockDetectionScreenState extends State<BlockDetectionScreen> {
           // Scanner Frame
           Center(
             child: GestureDetector(
-              onTap: detectBlocks,
+              onTap: controller.detectBlocks,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -98,23 +85,24 @@ class _BlockDetectionScreenState extends State<BlockDetectionScreen> {
           
           // Bottom Icons
           Positioned(
-            bottom: blocksDetected ? 100 : 40,
+            bottom: 40,
             left: 0,
             right: 0,
             child: Column(
               children: [
-                if (blocksDetected)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 10.0),
-                    child: Text(
-                      "Castle blocks detected!",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.orangeAccent,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                Obx(() => controller.blocksDetected.value
+                    ? Padding(
+                        padding: const EdgeInsets.only(bottom: 10.0),
+                        child: Text(
+                          "Castle blocks detected!",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.orangeAccent,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      )
+                    : SizedBox.shrink()),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -137,34 +125,32 @@ class _BlockDetectionScreenState extends State<BlockDetectionScreen> {
           ),
           
           // Proceed to AR Button
-          if (blocksDetected)
-            Positioned(
-              bottom: 40,
-              left: 50,
-              right: 50,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple.shade800,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+          Obx(() => controller.blocksDetected.value
+              ? Positioned(
+                  bottom: 40,
+                  left: 50,
+                  right: 50,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepPurple.shade800,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                    ),
+                    onPressed: () => Get.to(() => CharactersScreen()),
+                    child: Text(
+                      "PROCEED TO AR",
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 15),
-                ),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>CharactersScreen()));
-                },
-                child: Text(
-                  "PROCEED TO AR",
-                  style: TextStyle(fontSize: 16, color: Colors.white),
-                ),
-              ),
-            ),
+                )
+              : SizedBox.shrink()),
         ],
       ),
     );
   }
 }
-
 class ScannerFramePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {

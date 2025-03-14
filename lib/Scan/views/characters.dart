@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:play_iq/Scan/AddCharacter.dart'; // Ensure this file exists
+import 'package:play_iq/Scan/AddCharacter.dart';
+import 'package:play_iq/Scan/controllers/CharacterController.dart'; // Controller import karein
 
 class CharactersScreen extends StatelessWidget {
+  final CharacterController controller = Get.put(CharacterController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFD1A8E6), // Light purple background
+      backgroundColor: Color(0xFFD1A8E6),
       body: SafeArea(
         child: Column(
           children: [
@@ -22,13 +26,12 @@ class CharactersScreen extends StatelessWidget {
                   ),
                   child: IconButton(
                     icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                    onPressed: () => Get.back(),
                   ),
                 ),
               ),
             ),
+
             // Main Content
             Expanded(
               child: SingleChildScrollView(
@@ -59,12 +62,13 @@ class CharactersScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 10),
+
                       // Add Character Button
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF2D2F94), // Dark Indigo
+                            backgroundColor: Color(0xFF2D2F94),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -72,11 +76,7 @@ class CharactersScreen extends StatelessWidget {
                                 horizontal: 30, vertical: 14),
                           ),
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CharacterSelectionScreen()),
-                            );
+                            Get.to(() => CharacterSelectionScreen());
                           },
                           child: Text(
                             "+ ADD CHARACTER",
@@ -86,7 +86,8 @@ class CharactersScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 10),
-                      // Toggle Buttons Styled as in Image
+
+                      // Toggle Buttons for Lava & Water
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.0),
                         child: Row(
@@ -98,7 +99,9 @@ class CharactersScreen extends StatelessWidget {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Switch(value: false, onChanged: (value) {}),
+                                      Obx(() => Switch(
+                                          value: controller.isLavaOn.value,
+                                          onChanged: controller.toggleLava)),
                                       Text("Lava", style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w500, color: Colors.black)),
                                       SizedBox(width: 8),
@@ -115,7 +118,9 @@ class CharactersScreen extends StatelessWidget {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Switch(value: false, onChanged: (value) {}),
+                                      Obx(() => Switch(
+                                          value: controller.isWaterOn.value,
+                                          onChanged: controller.toggleWater)),
                                       Text("Water", style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w500, color: Colors.black)),
                                       SizedBox(width: 8),

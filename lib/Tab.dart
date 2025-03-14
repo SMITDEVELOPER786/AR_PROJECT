@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:play_iq/Home/home.dart';
-import 'package:play_iq/Scan/detectingBlocks.dart';
+import 'package:play_iq/Scan/views/detectingBlocks.dart';
 import 'package:play_iq/Settings/view/setting_screen.dart';
 
 class Hometab extends StatefulWidget {
