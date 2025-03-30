@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "169737066289",
+    "project_id": "ar-model-f0cfa",
+    "storage_bucket": "ar-model-f0cfa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169737066289:android:f76f7fc277afc33e8cc210",
+        "android_client_info": {
+          "package_name": "com.example.play_iq"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeHSRFpER0Y3WWSX_Xq2FKxXK0myVsQyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
