@@ -18,20 +18,20 @@ class ForgotPassword extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
+                const Center(
                   child: Text('Forgot Password?',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 24,
                           fontWeight: FontWeight.w700)),
                 ),
-                SizedBox(height: 10),
-                Center(
+                const SizedBox(height: 10),
+                const Center(
                   child: Text(
                     'To reset your password, you need your email or mobile number that can be authenticated',
                     textAlign: TextAlign.center,
@@ -40,9 +40,9 @@ class ForgotPassword extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 Center(
-                  child: Container(
+                  child: SizedBox(
                     height: 100,
                     child: Image.asset(
                       Assets.forgotPass,
@@ -50,15 +50,15 @@ class ForgotPassword extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Text("Email",
                     style: GoogleFonts.poppins(
                         color: AppTheme.backgroundColor,
                         fontSize: 16,
                         fontWeight: FontWeight.bold)),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextField(
-  style: TextStyle(color: Colors.black), // Text color set to black
+  style: const TextStyle(color: Colors.black), // Text color set to black
                   decoration: InputDecoration(
                       enabledBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.white),
@@ -69,32 +69,32 @@ class ForgotPassword extends StatelessWidget {
                       fillColor: Colors.white,
                       filled: true,
                       hintText: 'Email',
-                      hintStyle: TextStyle(color: AppTheme.backgroundColor)),
+                      hintStyle: const TextStyle(color: AppTheme.backgroundColor)),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                       onPressed: (){
-                        Get.to(CheckEmail());
+                        Get.to(const CheckEmail());
 
                       },
                   
                   style: ElevatedButton.styleFrom(
                       backgroundColor: AppTheme.backgroundColor,
-                      minimumSize: Size(double.infinity, 50)),
-                  child: Text('RESET PASSWORD',
+                      minimumSize: const Size(double.infinity, 50)),
+                  child: const Text('RESET PASSWORD',
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.white)),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Container(
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(2)),
                   child: ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(double.infinity, 50),
+                        minimumSize: const Size(double.infinity, 50),
                         backgroundColor: AppTheme.primary,
                       ),
-                      label: Text("BACK TO LOGIN",
+                      label: const Text("BACK TO LOGIN",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, color: Colors.white)),
                       onPressed: () => Get.back()

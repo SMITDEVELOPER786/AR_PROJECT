@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:play_iq/Scan/controllers/BlockDetectionController.dart';// Controller ka path sahi rakhein
+import 'package:play_iq/Scan/controllers/BlockDetectionController.dart'; // Controller ka path sahi rakhein
 import 'package:play_iq/Scan/views/characters.dart';
 
 class BlockDetectionScreen extends StatelessWidget {
-  final BlockDetectionController controller = Get.put(BlockDetectionController());
+  BlockDetectionController controller = Get.put(BlockDetectionController());
+
+  BlockDetectionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class BlockDetectionScreen extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Back Button
           Positioned(
             top: 40,
@@ -32,17 +34,17 @@ class BlockDetectionScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: IconButton(
-                icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
                 onPressed: () => Get.back(),
               ),
             ),
           ),
-          
+
           // Detecting Text
-          Align(
+          const Align(
             alignment: Alignment.topCenter,
             child: Padding(
-              padding: const EdgeInsets.only(top: 80.0),
+              padding: EdgeInsets.only(top: 80.0),
               child: Text(
                 "Detecting Blocks...",
                 style: TextStyle(
@@ -53,7 +55,7 @@ class BlockDetectionScreen extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Scanner Frame
           Center(
             child: GestureDetector(
@@ -82,7 +84,7 @@ class BlockDetectionScreen extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Bottom Icons
           Positioned(
             bottom: 40,
@@ -91,8 +93,8 @@ class BlockDetectionScreen extends StatelessWidget {
             child: Column(
               children: [
                 Obx(() => controller.blocksDetected.value
-                    ? Padding(
-                        padding: const EdgeInsets.only(bottom: 10.0),
+                    ? const Padding(
+                        padding: EdgeInsets.only(bottom: 10.0),
                         child: Text(
                           "Castle blocks detected!",
                           style: TextStyle(
@@ -102,20 +104,23 @@ class BlockDetectionScreen extends StatelessWidget {
                           ),
                         ),
                       )
-                    : SizedBox.shrink()),
+                    : const SizedBox.shrink()),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     IconButton(
-                      icon: Icon(Icons.photo, color: Colors.white, size: 30),
+                      icon: const Icon(Icons.photo,
+                          color: Colors.white, size: 30),
                       onPressed: () {},
                     ),
                     IconButton(
-                      icon: Icon(Icons.flash_on, color: Colors.white, size: 30),
+                      icon: const Icon(Icons.flash_on,
+                          color: Colors.white, size: 30),
                       onPressed: () {},
                     ),
                     IconButton(
-                      icon: Icon(Icons.sync, color: Colors.white, size: 30),
+                      icon:
+                          const Icon(Icons.sync, color: Colors.white, size: 30),
                       onPressed: () {},
                     ),
                   ],
@@ -123,7 +128,7 @@ class BlockDetectionScreen extends StatelessWidget {
               ],
             ),
           ),
-          
+
           // Proceed to AR Button
           Obx(() => controller.blocksDetected.value
               ? Positioned(
@@ -136,21 +141,22 @@ class BlockDetectionScreen extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 15),
+                      padding: const EdgeInsets.symmetric(vertical: 15),
                     ),
                     onPressed: () => Get.to(() => CharactersScreen()),
-                    child: Text(
+                    child: const Text(
                       "PROCEED TO AR",
                       style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
                   ),
                 )
-              : SizedBox.shrink()),
+              : const SizedBox.shrink()),
         ],
       ),
     );
   }
 }
+
 class ScannerFramePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
@@ -159,7 +165,7 @@ class ScannerFramePainter extends CustomPainter {
       ..strokeWidth = 4
       ..style = PaintingStyle.stroke;
 
-    final double cornerLength = 30;
+    const double cornerLength = 30;
 
     Path path = Path()
       ..moveTo(0, cornerLength)

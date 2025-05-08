@@ -21,11 +21,11 @@ class AppRoutes {
   static final pages = [
     GetPage(
       name: Routes.splash,
-      page: () => SplashScreen(),
+      page: () => const SplashScreen(),
     ),
     GetPage(
       name: Routes.skip,
-      page: () => SkipScreen(),
+      page: () => const SkipScreen(),
     ),
     GetPage(
       name: Routes.login,
@@ -38,11 +38,11 @@ class AppRoutes {
     ),
     GetPage(
       name: Routes.signup,
-      page: () => CheckEmail(),
+      page: () => const CheckEmail(),
     ),
     GetPage(
       name: Routes.logout,
-      page: () => LogOutScreen(),
+      page: () => const LogOutScreen(),
     ),
   ];
 }

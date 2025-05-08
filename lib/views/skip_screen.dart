@@ -21,7 +21,7 @@ class SkipScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Expanded(
@@ -31,9 +31,9 @@ class SkipScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       RichText(
-                        text: TextSpan(
+                        text: const TextSpan(
                           text: "Bring",
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.w700,
                               color: Colors.black),

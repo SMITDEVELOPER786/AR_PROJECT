@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:play_iq/Home/home.dart';
+import 'package:play_iq/Home/views/home.dart';
+
 import 'package:play_iq/Scan/views/detectingBlocks.dart';
 import 'package:play_iq/Settings/view/setting_screen.dart';
 
 class Hometab extends StatefulWidget {
+  const Hometab({super.key});
+
   @override
   _HometabState createState() => _HometabState();
 }
@@ -29,8 +32,8 @@ class _HometabState extends State<Hometab> {
       backgroundColor: const Color(0xFFEAE6F2),
       body: _pages[_selectedIndex],
       bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        decoration: const BoxDecoration(
           color: Color(0xFFEAE6F2),
           borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10)],
@@ -56,13 +59,16 @@ class _HometabState extends State<Hometab> {
           Icon(
             icon,
             size: 28,
-            color: _selectedIndex == index ? Color(0xFF001E62) : Colors.grey,
+            color:
+                _selectedIndex == index ? const Color(0xFF001E62) : Colors.grey,
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             label,
             style: TextStyle(
-              color: _selectedIndex == index ? Color(0xFF001E62) : Colors.grey,
+              color: _selectedIndex == index
+                  ? const Color(0xFF001E62)
+                  : Colors.grey,
               fontSize: 12,
               fontWeight: FontWeight.w500,
             ),
@@ -76,13 +82,13 @@ class _HometabState extends State<Hometab> {
     return GestureDetector(
       onTap: () => onTap(1),
       child: Container(
-        padding: EdgeInsets.all(16),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.all(16),
+        decoration: const BoxDecoration(
           color: Color(0xFF001E62),
           shape: BoxShape.circle,
           boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 5)],
         ),
-        child: Icon(Icons.qr_code_scanner, color: Colors.white, size: 30),
+        child: const Icon(Icons.qr_code_scanner, color: Colors.white, size: 30),
       ),
     );
   }

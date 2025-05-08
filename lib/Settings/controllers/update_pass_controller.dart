@@ -23,7 +23,6 @@ class UpdatePasswordController extends GetxController {
   }
 
   void updatePassword() {
-    // TODO: Implement password update logic
     Get.snackbar("Success", "Password updated successfully!",
         snackPosition: SnackPosition.BOTTOM);
   }

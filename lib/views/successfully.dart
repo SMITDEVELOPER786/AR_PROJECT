@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:play_iq/Home/home.dart';
+
 import 'package:play_iq/Tab.dart';
 import 'package:play_iq/views/login_screen.dart';
 import '../app/routes.dart';
@@ -16,20 +16,20 @@ class Successfully extends StatelessWidget {
       backgroundColor: Colors.grey[50],
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
+              const Center(
                 child: Text('Successfully',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 24,
                         fontWeight: FontWeight.w700)),
               ),
-              SizedBox(height: 10),
-              Center(
+              const SizedBox(height: 10),
+              const Center(
                 child: Text(
                   'Your password has been updated, please change your password regularly to avoid this happening',
                   textAlign: TextAlign.center,
@@ -38,9 +38,9 @@ class Successfully extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               Center(
-                child: Container(
+                child: SizedBox(
                   height: 150,
                   child: Image.asset(
                     Assets.changedPass,
@@ -48,39 +48,38 @@ class Successfully extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
-                        Get.to(Hometab());
-
+                  Get.to(const Hometab());
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: AppTheme.backgroundColor,
-                    minimumSize: Size(double.infinity, 50)),
-                child: Text('Continue',
+                    minimumSize: const Size(double.infinity, 50)),
+                child: const Text('Continue',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.white)),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(2)),
                 child: ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 50),
+                      minimumSize: const Size(double.infinity, 50),
                       backgroundColor: AppTheme.primary,
                     ),
-                    label: Text("BACK TO LOGIN",
+                    label: const Text("BACK TO LOGIN",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.white)),
                     onPressed: () => LoginScreen()),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "You have not received the email?",
                       style: TextStyle(color: AppTheme.backgroundColor),
                     ),
@@ -88,7 +87,7 @@ class Successfully extends StatelessWidget {
                         onPressed: () {
                           Get.toNamed(Routes.signup);
                         },
-                        child: Text(
+                        child: const Text(
                           ' Resend',
                           style: TextStyle(
                               color: AppTheme.highlightColor,

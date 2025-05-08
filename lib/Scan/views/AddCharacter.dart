@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:play_iq/Scan/RhymingGame.dart';
+
 import 'package:play_iq/Scan/controllers/CharacterSelectioncontroller.dart';
+import 'package:play_iq/Scan/views/RhymingGame.dart';
 
 class CharacterSelectionScreen extends StatelessWidget {
-  final CharacterSelectionController controller = Get.put(CharacterSelectionController());
+  CharacterSelectionController controller =
+      Get.put(CharacterSelectionController());
 
   final List<String> imageUrls = [
     'assets/images/elephant.png',
@@ -15,11 +17,13 @@ class CharacterSelectionScreen extends StatelessWidget {
     'assets/images/t-rex.png',
   ];
 
+  CharacterSelectionScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -32,19 +36,23 @@ class CharacterSelectionScreen extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0,
               leading: IconButton(
-                icon: Icon(Icons.arrow_back, color: Colors.black),
+                icon: const Icon(Icons.arrow_back, color: Colors.black),
                 onPressed: () => Get.back(),
               ),
-              title: Text(
+              title: const Text(
                 'Add Character',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
               ),
               centerTitle: true,
             ),
             Expanded(
               child: GridView.builder(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
@@ -61,11 +69,15 @@ class CharacterSelectionScreen extends StatelessWidget {
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16),
-                                  color: controller.selectedCharacterIndex.value == index
-                                      ? Colors.blue.withOpacity(0.5)
-                                      : Colors.white,
+                                  color:
+                                      controller.selectedCharacterIndex.value ==
+                                              index
+                                          ? Colors.blue.withOpacity(0.5)
+                                          : Colors.white,
                                   boxShadow: [
-                                    BoxShadow(color: Colors.grey.withOpacity(0.2), blurRadius: 10),
+                                    BoxShadow(
+                                        color: Colors.grey.withOpacity(0.2),
+                                        blurRadius: 10),
                                   ],
                                 ),
                                 child: Image.asset(
@@ -80,12 +92,13 @@ class CharacterSelectionScreen extends StatelessWidget {
                                   top: 8,
                                   right: 8,
                                   child: Container(
-                                    padding: EdgeInsets.all(4),
-                                    decoration: BoxDecoration(
+                                    padding: const EdgeInsets.all(4),
+                                    decoration: const BoxDecoration(
                                       color: Colors.white,
                                       shape: BoxShape.circle,
                                     ),
-                                    child: Icon(Icons.lock, color: Colors.black, size: 20),
+                                    child: const Icon(Icons.lock,
+                                        color: Colors.black, size: 20),
                                   ),
                                 ),
                             ],
@@ -102,7 +115,7 @@ class CharacterSelectionScreen extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF3F51B5),
+                    backgroundColor: const Color(0xFF3F51B5),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -110,8 +123,11 @@ class CharacterSelectionScreen extends StatelessWidget {
                   onPressed: () {
                     _showPuzzleDialog();
                   },
-                  child: Text('PLACE CHARACTER',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
+                  child: const Text('PLACE CHARACTER',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white)),
                 ),
               ),
             ),
@@ -128,16 +144,19 @@ class CharacterSelectionScreen extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
-        contentPadding: EdgeInsets.all(20),
+        contentPadding: const EdgeInsets.all(20),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
+            const Text(
               "Solve Puzzle to Unlock\nExotic Characters",
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -150,10 +169,11 @@ class CharacterSelectionScreen extends StatelessWidget {
                 onPressed: () {
                   Get.to(() => RhymingGameScreen());
                 },
-                child: Text("OKAY, LET'S START", style: TextStyle(color: Colors.white)),
+                child: const Text("OKAY, LET'S START",
+                    style: TextStyle(color: Colors.white)),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
@@ -166,7 +186,8 @@ class CharacterSelectionScreen extends StatelessWidget {
                 onPressed: () {
                   Get.back();
                 },
-                child: Text("NO, GO BACK", style: TextStyle(color: Colors.indigo.shade900)),
+                child: Text("NO, GO BACK",
+                    style: TextStyle(color: Colors.indigo.shade900)),
               ),
             ),
           ],

@@ -14,7 +14,7 @@ class SelectLanguage extends StatelessWidget {
       backgroundColor: Colors.grey[50],
       body: SingleChildScrollView(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -26,21 +26,21 @@ class SelectLanguage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                    IconButton(
-                icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+                icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
                 onPressed: () {
             Navigator.pop(context);
 
                 },
               ),
-                SizedBox(height: 20),
-                Text('Select Your Language',
+                const SizedBox(height: 20),
+                const Text('Select Your Language',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700,color: Colors.black)),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Obx(() => GestureDetector(
                       onTap: () => controller.updateLanguage("English"),
                       child: Container(
                         padding:
-                            EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                            const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
@@ -54,26 +54,26 @@ class SelectLanguage extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            CircleAvatar(
+                            const CircleAvatar(
                               backgroundImage: AssetImage('assets/images/uk_flag.jpg'),
                               radius: 15,
                             ),
-                            SizedBox(width: 10),
-                            Expanded(
+                            const SizedBox(width: 10),
+                            const Expanded(
                                 child: Text("English",
                                     style: TextStyle(fontSize: 16,color: Colors.black))),
                             if (controller.selectedLanguage.value == "English")
-                              Icon(Icons.check, color: Colors.black),
+                              const Icon(Icons.check, color: Colors.black),
                           ],
                         ),
                       ),
                     )),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Obx(() => GestureDetector(
                       onTap: () => controller.updateLanguage("Español"),
                       child: Container(
                         padding:
-                            EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                            const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
@@ -87,16 +87,16 @@ class SelectLanguage extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            CircleAvatar(
+                            const CircleAvatar(
                               backgroundImage: AssetImage('Assets/images/bahasa_flag.jpg'),
                               radius: 15,
                             ),
-                            SizedBox(width: 10),
-                            Expanded(
+                            const SizedBox(width: 10),
+                            const Expanded(
                                 child: Text("Español",
                                     style: TextStyle(fontSize: 16,color: Colors.black))),
                             if (controller.selectedLanguage.value == "Español")
-                              Icon(
+                              const Icon(
                                 Icons.check,
                                 color: Colors.black,
                               )
@@ -104,12 +104,12 @@ class SelectLanguage extends StatelessWidget {
                         ),
                       ),
                     )),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Obx(() => GestureDetector(
                       onTap: () => controller.updateLanguage("Deutsch"),
                       child: Container(
                         padding:
-                            EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                            const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
@@ -123,16 +123,16 @@ class SelectLanguage extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            CircleAvatar(
+                            const CircleAvatar(
                               backgroundImage: AssetImage('assets/images/deutsch_flag.jpg'),
                               radius: 15,
                             ),
-                            SizedBox(width: 10),
-                            Expanded(
+                            const SizedBox(width: 10),
+                            const Expanded(
                                 child: Text("Deutsch",
                                     style: TextStyle(fontSize: 16,color: Colors.black))),
                             if (controller.selectedLanguage.value == "Deutsch")
-                              Icon(
+                              const Icon(
                                 Icons.check,
                                 color: Colors.black,
                               )
@@ -140,7 +140,7 @@ class SelectLanguage extends StatelessWidget {
                         ),
                       ),
                     )),
-                SizedBox(height: 300),
+                const SizedBox(height: 300),
                 Center(
                   child: SizedBox(
                     width: 250,
@@ -155,7 +155,7 @@ class SelectLanguage extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8)),
                       ),
-                      child: Text("UPDATE",
+                      child: const Text("UPDATE",
                           style: TextStyle(color: Colors.white, fontSize: 16,)),
                     ),
                   ),

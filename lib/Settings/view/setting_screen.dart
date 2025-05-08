@@ -21,41 +21,41 @@ class SettingScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
+              const Center(
                 child: Text(
                   'Settings',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               _buildAudioTile(),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               _buildAnimationSettings(),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               _buildSettingsTile(
                 icon: Icons.lock,
                 title: 'Change Password',
-                onTap: () => Get.to(() => UpdatePasswordScreen()), // Navigate
+                onTap: () => Get.to(() => const UpdatePasswordScreen()), // Navigate
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               _buildSettingsTile(
                 icon: Icons.language,
                 title: 'Language',
                 subtitle: 'English',
-                onTap: () => Get.to(() => SelectLanguage()), // Navigate
+                onTap: () => Get.to(() => const SelectLanguage()), // Navigate
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               _buildSettingsTile(
                 icon: Icons.logout,
                 title: 'Logout',
-                onTap: () => Get.to(() => LogOutScreen()), // Navigate
+                onTap: () => Get.to(() => const LogOutScreen()), // Navigate
               ),
-              Spacer(),
+              const Spacer(),
             ],
           ),
         ),
@@ -65,16 +65,16 @@ class SettingScreen extends StatelessWidget {
 
   Widget _buildAudioTile() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       height: 60,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
+          const Row(
             children: [
               Icon(Icons.mic, color: Colors.black),
               SizedBox(width: 10),
@@ -93,25 +93,25 @@ class SettingScreen extends StatelessWidget {
 
   Widget _buildAnimationSettings() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Animation Settings',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.black),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Obx(() => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(6, (index) {
                   return Expanded(
                     child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 2),
+                      margin: const EdgeInsets.symmetric(horizontal: 2),
                       height: 6,
                       decoration: BoxDecoration(
                         color: controller.animationSpeed.value >= (index + 1) * 20 ? Colors.blue : Colors.grey[300],
@@ -129,15 +129,15 @@ class SettingScreen extends StatelessWidget {
   Widget _buildSettingsTile({required IconData icon, required String title, String? subtitle, required VoidCallback onTap}) {
     return Container(
       height: 60,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
       child: ListTile(
         leading: Icon(icon, color: Colors.black),
-        title: Text(title, style: TextStyle(color: Colors.black)),
-        subtitle: subtitle != null ? Text(subtitle, style: TextStyle(color: Colors.black)) : null,
-        trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.black),
+        title: Text(title, style: const TextStyle(color: Colors.black)),
+        subtitle: subtitle != null ? Text(subtitle, style: const TextStyle(color: Colors.black)) : null,
+        trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.black),
         onTap: onTap,
       ),
     );

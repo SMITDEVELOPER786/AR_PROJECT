@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:play_iq/Home/home.dart';
+// import 'package:play_iq/Home/home.dart';
 import 'package:play_iq/Tab.dart';
 import 'package:play_iq/core/theme.dart';
 import 'package:play_iq/views/forgot_password.dart';
 import 'package:play_iq/views/signup_screen.dart';
-import '../app/routes.dart';
 import '../controllers/login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -37,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Center(
                   child: Text(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
@@ -48,51 +47,54 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Text("Parents Details",
                     style: GoogleFonts.poppins(
                         color: AppTheme.backgroundColor,
                         fontSize: 18,
                         fontWeight: FontWeight.bold)),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text("Email",
                     style: GoogleFonts.poppins(
                         color: AppTheme.backgroundColor,
                         fontSize: 16,
                         fontWeight: FontWeight.bold)),
-                SizedBox(height: 10),
-            TextField(
-  style: TextStyle(color: Colors.black), // Text color set to black
-  decoration: InputDecoration(
-    enabledBorder: const OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.white),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.grey.shade400),
-    ),
-    fillColor: Colors.white,
-    filled: true,
-    hintText: 'Email',
-    hintStyle: TextStyle(color: AppTheme.backgroundColor),
-  ),
-),
-
-                SizedBox(height: 20),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: controller.emailController,
+                  style: const TextStyle(
+                      color: Colors.black), // Text color set to black
+                  decoration: InputDecoration(
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ),
+                    fillColor: Colors.white,
+                    filled: true,
+                    hintText: 'Email',
+                    hintStyle: const TextStyle(color: AppTheme.backgroundColor),
+                  ),
+                ),
+                const SizedBox(height: 20),
                 Text("Password",
                     style: GoogleFonts.poppins(
                         color: AppTheme.backgroundColor,
                         fontSize: 16,
                         fontWeight: FontWeight.bold)),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Obx(() => TextField(
-  style: TextStyle(color: Colors.black), // Text color set to black
+                      style: const TextStyle(
+                          color: Colors.black), // Text color set to black
                       controller: controller.passwordController,
                       obscureText: controller.isPasswordHidden.value,
                       decoration: InputDecoration(
                         fillColor: Colors.white,
                         filled: true,
                         hintText: "Password",
-                        hintStyle: TextStyle(color: AppTheme.backgroundColor),
+                        hintStyle:
+                            const TextStyle(color: AppTheme.backgroundColor),
                         enabledBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                         ),
@@ -108,7 +110,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     )),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -116,8 +118,8 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         Checkbox(
                             fillColor:
-                                MaterialStateProperty.resolveWith((states) {
-                              if (states.contains(MaterialState.selected)) {
+                                WidgetStateProperty.resolveWith((states) {
+                              if (states.contains(WidgetState.selected)) {
                                 return Colors
                                     .blue; // Background color when checked
                               }
@@ -126,40 +128,45 @@ class LoginScreen extends StatelessWidget {
                             }),
                             value: false,
                             onChanged: (value) {}),
-                        Text("Remember me",
-                            style: TextStyle(color: const Color.fromARGB(255, 153, 132, 132))),
+                        const Text("Remember me",
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 153, 132, 132))),
                       ],
                     ),
                     TextButton(
                       onPressed: () {
                         Get.to(ForgotPassword());
                       },
-                      child: Text(
+                      child: const Text(
                         "Forgot Password?",
                         style: TextStyle(color: AppTheme.backgroundColor),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Center(
-                  child: Container(
-                    width: 300,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: Size(double.infinity, 50),
-                          backgroundColor: AppTheme.backgroundColor),
-                      onPressed: (){
-                        Get.to(Hometab());
-                      },
-                      child: Text("LOGIN",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
-                    ),
-                  ),
+                  child: Obx(() {
+                    return SizedBox(
+                      width: 300,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(double.infinity, 50),
+                            backgroundColor: AppTheme.backgroundColor),
+                        onPressed: () {
+                          controller.login();
+                        },
+                        child: controller.isLoading.value
+                            ? const CircularProgressIndicator()
+                            : const Text("LOGIN",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white)),
+                      ),
+                    );
+                  }),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Center(
                   child: Container(
                     decoration:
@@ -167,13 +174,13 @@ class LoginScreen extends StatelessWidget {
                     width: 300,
                     child: ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(double.infinity, 50),
+                        minimumSize: const Size(double.infinity, 50),
                         backgroundColor: AppTheme.primary,
                       ),
-                      icon: Icon(
+                      icon: const Icon(
                         FontAwesomeIcons.google,
                       ),
-                      label: Text("SIGN IN WITH GOOGLE",
+                      label: const Text("SIGN IN WITH GOOGLE",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: AppTheme.backgroundColor)),
@@ -181,21 +188,20 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "You don’t have an account yet?",
                         style: TextStyle(color: AppTheme.backgroundColor),
                       ),
                       TextButton(
                           onPressed: () {
-                        Get.to(SignUpScreen());
-                            
+                            Get.to(SignUpScreen());
                           },
-                          child: Text(
+                          child: const Text(
                             ' Sign up',
                             style: TextStyle(
                                 color: AppTheme.highlightColor,

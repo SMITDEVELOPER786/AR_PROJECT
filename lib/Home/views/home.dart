@@ -6,10 +6,13 @@ import 'package:play_iq/Scan/views/detectingBlocks.dart';
 import 'package:play_iq/core/theme.dart';
 
 class HomeScreen extends StatelessWidget {
-  final HomeController controller = Get.put(HomeController());
+  HomeController controller = Get.put(HomeController());
+
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    controller.getCurretUser();
     return Scaffold(
       backgroundColor: const Color(0xFFEAE6F2),
       body: SingleChildScrollView(
@@ -33,12 +36,13 @@ class HomeScreen extends StatelessWidget {
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 2,
-                          color: Color(0xFF2E327C),
+                          color: const Color(0xFF2E327C),
                         ),
                       ),
                       Obx(() => Text(
-                            'Welcome, ${controller.userName.value}',
-                            style: TextStyle(fontSize: 16, color: Colors.black),
+                            'Welcome, ${controller.userName.value.split("@")[0]}',
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.black),
                           )),
                     ],
                   ),
@@ -52,7 +56,7 @@ class HomeScreen extends StatelessWidget {
 
               // Search Box
               TextField(
-                style: TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   hintText: 'Search AR',
                   prefixIcon: const Icon(Icons.search),
@@ -67,11 +71,11 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 20),
 
               // Explore AR Section
-              Center(
+              const Center(
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
+                    Text(
                       'Explore ',
                       style: TextStyle(
                         fontSize: 22,
@@ -79,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                    const Text(
+                    Text(
                       'AR',
                       style: TextStyle(
                         fontSize: 22,
@@ -138,9 +142,9 @@ class HomeScreen extends StatelessWidget {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppTheme.backgroundColor,
-                      minimumSize: Size(double.infinity, 50),
+                      minimumSize: const Size(double.infinity, 50),
                     ),
-                    child: Text(
+                    child: const Text(
                       'SCAN YOUR BLOCK',
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.white),
